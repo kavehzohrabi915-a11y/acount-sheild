@@ -26,8 +26,7 @@ class Account extends Model
 
     public function setSensitiveData(array $data, string $encryptionKey): void
     {
-        $iv = random_bytes(12);
-        $tag = null;
+        $iv = random_bytes(16);
         
         $encrypted = openssl_encrypt(
             json_encode($data),

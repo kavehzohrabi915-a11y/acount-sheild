@@ -1,8 +1,8 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">اکانت‌ها</h2>
-            <a href="{{ route('accounts.create') }}" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg text-sm text-white">
+            <h2 class="font-semibold text-xl text-gray-100">اکانت‌ها</h2>
+            <a href="{{ route('accounts.create') }}" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-lg text-sm">
                 افزودن اکانت
             </a>
         </div>

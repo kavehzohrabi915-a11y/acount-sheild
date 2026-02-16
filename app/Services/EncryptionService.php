@@ -27,8 +27,7 @@ class EncryptionService
             $iv = substr($data, 0, 16);
             $encrypted = substr($data, 16);
             
-            $decrypted = openssl_decrypt($encrypted, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv);
-            return $decrypted === false ? null : $decrypted;
+            return openssl_decrypt($encrypted, 'AES-256-CBC', $key, OPENSSL_RAW_DATA, $iv);
         } catch (\Exception $e) {
             return null;
         }
