@@ -13,6 +13,7 @@ class AccountController extends Controller
 
     public function __construct(EncryptionService $encryptionService)
     {
+        $this->middleware(['auth', 'master.password']);
         $this->encryptionService = $encryptionService;
     }
 
