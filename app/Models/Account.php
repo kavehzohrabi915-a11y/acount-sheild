@@ -43,8 +43,12 @@ class Account extends Model
         $this->auth_tag = base64_encode($tag);
     }
 
-    public function getSensitiveData(string $encryptionKey): array
+    public function getSensitiveData(?string $encryptionKey): array
     {
+        if (!$encryptionKey) {
+            return [];
+        }
+
         $encrypted = base64_decode($this->encrypted_data);
         $iv = base64_decode($this->iv);
         $tag = base64_decode($this->auth_tag);

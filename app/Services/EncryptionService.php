@@ -19,8 +19,12 @@ class EncryptionService
         return base64_encode($iv . $encrypted);
     }
 
-    public function decryptUserKey(string $encryptedKey, string $masterPassword): ?string
+    public function decryptUserKey(?string $encryptedKey, string $masterPassword): ?string
     {
+        if (!$encryptedKey) {
+            return null;
+        }
+
         try {
             $key = hash('sha256', $masterPassword, true);
             $data = base64_decode($encryptedKey);
@@ -39,8 +43,12 @@ class EncryptionService
         return hash('sha256', $password);
     }
 
-    public function verifyMasterPassword(string $password, string $hash): bool
+    public function verifyMasterPassword(string $password, ?string $hash): bool
     {
+        if (!$hash) {
+            return false;
+        }
+
         return hash_equals($hash, $this->hashMasterPassword($password));
     }
 }
